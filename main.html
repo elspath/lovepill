@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lovepill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'BabyDoll';
+      src: url('fonts/Baby Doll.ttf') format('truetype');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #E8D5F5 0%, #F5D6E8 50%, #EDE0FA 100%);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      background: #FFF0F7;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 16px rgba(180, 130, 200, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .nav-title {
+      font-family: 'BabyDoll', cursive;
+      font-size: 2rem;
+      color: #c48adb;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links button {
+      background: none;
+      border: none;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #b07acc;
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      border-radius: 50px;
+      transition: background 0.2s ease, color 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links button:hover,
+    .nav-links button.active {
+      background: #E8D5F5;
+      color: #9050b8;
+    }
+
+    /* MAIN CONTENT */
+    .content {
+      flex: 1;
+      padding: 2.5rem 2rem 8rem;
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* SECTION STYLES */
+    .section {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-family: 'BabyDoll', cursive;
+      font-size: 2.8rem;
+      color: #c48adb;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .card {
+      background: #FFF0F7;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(180, 130, 200, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .card p {
+      color: #a07aba;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    /* MUSIC PLAYER */
+    .player-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFF0F7;
+      box-shadow: 0 -2px 20px rgba(180, 130, 200, 0.15);
+      z-index: 200;
+      padding: 0.6rem 1rem;
+    }
+
+    .player-bar iframe {
+      display: block;
+      width: 100%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-title" onclick="showSection('home')" style="cursor:pointer">lovepill</a>
+    <div class="nav-links">
+      <button onclick="showSection('home')" class="active" id="nav-home">home</button>
+      <button onclick="showSection('timeline')" id="nav-timeline">our story</button>
+      <button onclick="showSection('gallery')" id="nav-gallery">gallery</button>
+      <button onclick="showSection('notes')" id="nav-notes">love notes</button>
+      <button onclick="showSection('jokes')" id="nav-jokes">just us</button>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <!-- HOME -->
+    <div class="section active" id="section-home">
+      <div class="section-title">hello yellow.</div>
+      <div class="card">
+        <p>welcome to lovepill. this is for you.</p>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="section" id="section-timeline">
+      <div class="section-title">our story</div>
+      <div class="card">
+        <p>timeline coming soon...</p>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="section" id="section-gallery">
+      <div class="section-title">gallery</div>
+      <div class="card">
+        <p>photos coming soon...</p>
+      </div>
+    </div>
+
+    <!-- LOVE NOTES -->
+    <div class="section" id="section-notes">
+      <div class="section-title">love notes</div>
+      <div class="card">
+        <p>notes coming soon...</p>
+      </div>
+    </div>
+
+    <!-- JUST US -->
+    <div class="section" id="section-jokes">
+      <div class="section-title">just us</div>
+      <div class="card">
+        <p>coming soon...</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PERSISTENT MUSIC PLAYER -->
+  <div class="player-bar">
+    <iframe
+      src="https://open.spotify.com/embed/playlist/3av0i23D5U6e2lqhty5qY3?utm_source=generator&theme=0"
+      height="80"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <script>
+    function showSection(name) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+      document.getElementById('section-' + name).classList.add('active');
+      document.getElementById('nav-' + name).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
