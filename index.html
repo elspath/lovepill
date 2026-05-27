@@ -1,9 +1,151 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>lovepill</title>
-  </head>
-  <body>
-    <p>coming soon</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lovepill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'BabyDoll';
+      src: url('fonts/Baby Doll.ttf') format('truetype');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #E8D5F5 0%, #F5D6E8 50%, #EDE0FA 100%);
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      padding: 3rem 2.5rem;
+      background: #FFF0F7;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(180, 130, 200, 0.15);
+      max-width: 420px;
+      width: 90%;
+    }
+
+    .site-title {
+      font-family: 'BabyDoll', cursive;
+      font-size: 3.5rem;
+      color: #c48adb;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, #E8D5F5, #F5D6E8);
+      margin: 1rem auto 2rem;
+      border-radius: 2px;
+    }
+
+    .hint {
+      font-size: 0.95rem;
+      color: #b07acc;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+
+    .password-input {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      border: 2px solid #E8D5F5;
+      border-radius: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
+      color: #9b6bb5;
+      background: #ffffff;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.3s ease;
+      letter-spacing: 2px;
+    }
+
+    .password-input:focus {
+      border-color: #c48adb;
+    }
+
+    .password-input::placeholder {
+      letter-spacing: 1px;
+      color: #d4aee8;
+    }
+
+    .submit-btn {
+      margin-top: 1.2rem;
+      width: 100%;
+      padding: 0.85rem;
+      background: linear-gradient(135deg, #E8D5F5, #F5D6E8);
+      border: none;
+      border-radius: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #a06abe;
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    .error-msg {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #d4a0c8;
+      min-height: 1.2em;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="site-title">lovepill</div>
+    <div class="divider"></div>
+    <p class="hint">what color are you today?</p>
+    <input
+      type="password"
+      class="password-input"
+      id="passwordInput"
+      placeholder="..."
+      autocomplete="off"
+    />
+    <button class="submit-btn" onclick="checkPassword()">enter</button>
+    <p class="error-msg" id="errorMsg"></p>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('passwordInput').value.trim().toLowerCase();
+      if (input === 'yellow') {
+        window.location.href = 'main.html';
+      } else {
+        const msg = document.getElementById('errorMsg');
+        msg.textContent = 'try again tomorrow...';
+        setTimeout(() => { msg.textContent = ''; }, 2000);
+      }
+    }
+
+    document.getElementById('passwordInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+  </script>
+</body>
 </html>
