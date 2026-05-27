@@ -20,7 +20,7 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #E8D5F5 0%, #F5D6E8 50%, #EDE0FA 100%);
+      background: #F5E6FA;
       font-family: 'Quicksand', sans-serif;
       display: flex;
       flex-direction: column;
@@ -32,27 +32,18 @@
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       box-shadow: 0 2px 16px rgba(180, 130, 200, 0.1);
       position: sticky;
       top: 0;
       z-index: 100;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .nav-title {
-      font-family: 'BabyDoll', cursive;
-      font-size: 2rem;
-      color: #c48adb;
-      letter-spacing: 2px;
-      text-decoration: none;
     }
 
     .nav-links {
       display: flex;
       gap: 0.3rem;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-links button {
@@ -78,7 +69,7 @@
     /* MAIN CONTENT */
     .content {
       flex: 1;
-      padding: 2.5rem 2rem 8rem;
+      padding: 3rem 2rem 8rem;
       max-width: 860px;
       width: 100%;
       margin: 0 auto;
@@ -105,6 +96,7 @@
       color: #c48adb;
       margin-bottom: 1.5rem;
       letter-spacing: 1px;
+      text-align: center;
     }
 
     .card {
@@ -119,6 +111,31 @@
       color: #a07aba;
       line-height: 1.8;
       font-size: 0.95rem;
+    }
+
+    /* HOME */
+    .home-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      text-align: center;
+    }
+
+    .home-title {
+      font-family: 'BabyDoll', cursive;
+      font-size: 4rem;
+      color: #c48adb;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .home-quote {
+      font-size: 1.05rem;
+      color: #b07acc;
+      line-height: 2;
+      max-width: 420px;
     }
 
     /* MUSIC PLAYER */
@@ -143,13 +160,13 @@
 <body>
 
   <nav>
-    <a class="nav-title" onclick="showSection('home')" style="cursor:pointer">lovepill</a>
     <div class="nav-links">
       <button onclick="showSection('home')" class="active" id="nav-home">home</button>
-      <button onclick="showSection('timeline')" id="nav-timeline">our story</button>
-      <button onclick="showSection('gallery')" id="nav-gallery">gallery</button>
       <button onclick="showSection('notes')" id="nav-notes">love notes</button>
-      <button onclick="showSection('jokes')" id="nav-jokes">just us</button>
+      <button onclick="showSection('video')" id="nav-video">for your eyes only</button>
+      <button onclick="showSection('animals')" id="nav-animals">our animals</button>
+      <button onclick="showSection('us')" id="nav-us">this is so us</button>
+      <button onclick="showSection('fragments')" id="nav-fragments">fragments</button>
     </div>
   </nav>
 
@@ -157,27 +174,9 @@
 
     <!-- HOME -->
     <div class="section active" id="section-home">
-      <div class="section-title">hello yellow</div>
-      <div class="card">
-        <p style="font-size: 1.1rem; color: #c48adb; font-style: italic; line-height: 1.9;">
-          "i love you more than i did yesterday<br>and less than i will tomorrow"
-        </p>
-      </div>
-    </div>
-
-    <!-- TIMELINE -->
-    <div class="section" id="section-timeline">
-      <div class="section-title">our story</div>
-      <div class="card">
-        <p>timeline coming soon...</p>
-      </div>
-    </div>
-
-    <!-- GALLERY -->
-    <div class="section" id="section-gallery">
-      <div class="section-title">gallery</div>
-      <div class="card">
-        <p>photos coming soon...</p>
+      <div class="home-wrap">
+        <div class="home-title">hello yellow</div>
+        <p class="home-quote">i love you more than i did yesterday<br>and less than i will tomorrow</p>
       </div>
     </div>
 
@@ -185,13 +184,37 @@
     <div class="section" id="section-notes">
       <div class="section-title">love notes</div>
       <div class="card">
-        <p>notes coming soon...</p>
+        <p>coming soon...</p>
       </div>
     </div>
 
-    <!-- JUST US -->
-    <div class="section" id="section-jokes">
-      <div class="section-title">just us</div>
+    <!-- VIDEO -->
+    <div class="section" id="section-video">
+      <div class="section-title">for your eyes only</div>
+      <div class="card">
+        <p>coming soon...</p>
+      </div>
+    </div>
+
+    <!-- ANIMALS -->
+    <div class="section" id="section-animals">
+      <div class="section-title">our animals</div>
+      <div class="card">
+        <p>coming soon...</p>
+      </div>
+    </div>
+
+    <!-- THIS IS SO US -->
+    <div class="section" id="section-us">
+      <div class="section-title">this is so us</div>
+      <div class="card">
+        <p>coming soon...</p>
+      </div>
+    </div>
+
+    <!-- FRAGMENTS -->
+    <div class="section" id="section-fragments">
+      <div class="section-title">fragments</div>
       <div class="card">
         <p>coming soon...</p>
       </div>
