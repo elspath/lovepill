@@ -113,30 +113,30 @@
       font-size: 0.95rem;
     }
 
-    /* HOME */
-    .home-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-      text-align: center;
-    }
+   /* HOME */
+  .home-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+}
 
-    .home-title {
-      font-family: 'Klee One', cursive;
-      font-size: 4rem;
-      color: #c48adb;
-      letter-spacing: 2px;
-      margin-bottom: 1.5rem;
-    }
+.day-count {
+  font-family: 'Klee One', cursive;
+  font-size: 3.5rem;
+  color: #c48adb;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
 
-    .home-quote {
-      font-size: 1.05rem;
-      color: #b07acc;
-      line-height: 2;
-      max-width: 420px;
-    }
+.day-label {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.05rem;
+  color: #b07acc;
+  letter-spacing: 1px;
+}
 
     /* MUSIC PLAYER */
     .player-bar {
@@ -174,10 +174,10 @@
 
     <!-- HOME -->
     <div class="section active" id="section-home">
-      <div class="home-wrap">
-        <div class="home-title">hello yellow</div>
-        <p class="home-quote">i love you more than i did yesterday<br>and less than i will tomorrow</p>
-      </div>
+<div class="home-wrap">
+  <div class="day-count" id="dayCount"></div>
+  <div class="day-label">happy sweet days</div>
+</div>
     </div>
 
     <!-- LOVE NOTES -->
@@ -233,7 +233,7 @@
     </iframe>
   </div>
 
-  <script>
+<script>
     function showSection(name) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
@@ -241,6 +241,14 @@
       document.getElementById('nav-' + name).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    function updateDayCount() {
+      const start = new Date('2025-06-01');
+      const today = new Date();
+      const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+      document.getElementById('dayCount').textContent = diff;
+    }
+    updateDayCount();
   </script>
 
 </body>
