@@ -498,13 +498,74 @@
 
     </div>
 
-    <!-- ANIMALS -->
-    <div class="section" id="section-animals">
-      <div class="section-title">animals</div>
-      <div class="card">
-        <p>coming soon...</p>
+<!-- ANIMALS -->
+<div class="section" id="section-animals">
+  <div class="section-title">animals</div>
+
+  <div style="position: relative; max-width: 460px; margin: 0 auto; padding: 0 0 40px;">
+
+    <div style="position: relative; border-radius: 24px; overflow: hidden; background: rgba(255, 240, 247, 0.65); box-shadow: 0 6px 28px rgba(184, 158, 203, 0.18);">
+
+      <div id="animalSlides">
+
+        <div class="animal-slide" style="display: block;">
+          <img src="images/animals/fox_and_cat_1.jpg" alt="fox and cat" style="width: 100%; height: 360px; object-fit: cover; display: block;">
+        </div>
+
+        <div class="animal-slide" style="display: none;">
+          <img src="images/animals/fox_and_fox_1.jpg" alt="two foxes" style="width: 100%; height: 360px; object-fit: cover; display: block;">
+        </div>
+
+        <div class="animal-slide" style="display: none;">
+          <img src="images/animals/lamb_and_donkey_snow.jpg" alt="lamb and donkey in snow" style="width: 100%; height: 360px; object-fit: cover; display: block;">
+        </div>
+
+        <div class="animal-slide" style="display: none;">
+          <img src="images/animals/donkey_and_donkey.jpg" alt="two donkeys" style="width: 100%; height: 360px; object-fit: cover; display: block;">
+        </div>
+
+        <div class="animal-slide" style="display: none;">
+          <img src="images/animals/penguin_and_penguin_1.jpg" alt="two penguins" style="width: 100%; height: 360px; object-fit: cover; display: block;">
+        </div>
+
+        <div class="animal-slide" style="display: none;">
+          <img src="images/animals/seal_and_penguin_1.jpg" alt="seal and penguin" style="width: 100%; height: 360px; object-fit: cover; display: block;">
+        </div>
+
       </div>
+
+      <button onclick="changeAnimalSlide(-1)" aria-label="previous"
+        style="position: absolute; top: 50%; left: 12px; transform: translateY(-50%);
+               background: rgba(255, 240, 247, 0.88); border: none; border-radius: 50%;
+               width: 42px; height: 42px; font-size: 1.5rem; color: #b89ecb;
+               cursor: pointer; display: flex; align-items: center; justify-content: center;
+               box-shadow: 0 2px 10px rgba(184,158,203,0.25); line-height: 1;">&#8249;</button>
+
+      <button onclick="changeAnimalSlide(1)" aria-label="next"
+        style="position: absolute; top: 50%; right: 12px; transform: translateY(-50%);
+               background: rgba(255, 240, 247, 0.88); border: none; border-radius: 50%;
+               width: 42px; height: 42px; font-size: 1.5rem; color: #b89ecb;
+               cursor: pointer; display: flex; align-items: center; justify-content: center;
+               box-shadow: 0 2px 10px rgba(184,158,203,0.25); line-height: 1;">&#8250;</button>
+
     </div>
+
+    <div style="min-height: 52px; margin-top: 20px; padding: 0 16px;">
+      <p id="animalCaption" style="font-family: 'Quicksand', sans-serif; font-size: 1rem;
+         color: #9b7bb0; font-style: italic; margin: 0; line-height: 1.6;"></p>
+    </div>
+
+    <div style="margin-top: 14px; display: flex; justify-content: center; gap: 8px;">
+      <span class="animal-dot" onclick="goToAnimalSlide(0)" style="width: 9px; height: 9px; border-radius: 50%; background: #b89ecb; cursor: pointer; display: inline-block;"></span>
+      <span class="animal-dot" onclick="goToAnimalSlide(1)" style="width: 9px; height: 9px; border-radius: 50%; background: #e8d5f5; cursor: pointer; display: inline-block;"></span>
+      <span class="animal-dot" onclick="goToAnimalSlide(2)" style="width: 9px; height: 9px; border-radius: 50%; background: #e8d5f5; cursor: pointer; display: inline-block;"></span>
+      <span class="animal-dot" onclick="goToAnimalSlide(3)" style="width: 9px; height: 9px; border-radius: 50%; background: #e8d5f5; cursor: pointer; display: inline-block;"></span>
+      <span class="animal-dot" onclick="goToAnimalSlide(4)" style="width: 9px; height: 9px; border-radius: 50%; background: #e8d5f5; cursor: pointer; display: inline-block;"></span>
+      <span class="animal-dot" onclick="goToAnimalSlide(5)" style="width: 9px; height: 9px; border-radius: 50%; background: #e8d5f5; cursor: pointer; display: inline-block;"></span>
+    </div>
+
+  </div>
+</div>
 
     <!-- THIS IS SO US -->
     <div class="section" id="section-us">
@@ -674,6 +735,43 @@
       }
       showQuizView('view-quiz');
     })();
+
+// ── animals carousel ──────────────────────────────────────────────────
+const animalData = [
+  { caption: "you bothering me when i am lazy"   },
+  { caption: "us enjoying a beautiful sunny day"  },
+  { caption: "us enjoying a beautiful snowy day"  },
+  { caption: "us being silly :P"                  },
+  { caption: "us at the end of the world"         },
+  { caption: "you when you are grumpy"            },
+];
+
+let currentAnimalSlide = 0;
+
+function updateAnimalCarousel() {
+  const slides  = document.querySelectorAll('.animal-slide');
+  const dots    = document.querySelectorAll('.animal-dot');
+  const caption = document.getElementById('animalCaption');
+  slides.forEach((slide, i) => {
+    slide.style.display = i === currentAnimalSlide ? 'block' : 'none';
+  });
+  dots.forEach((dot, i) => {
+    dot.style.background = i === currentAnimalSlide ? '#b89ecb' : '#e8d5f5';
+  });
+  caption.textContent = animalData[currentAnimalSlide].caption;
+}
+
+function changeAnimalSlide(dir) {
+  const total = document.querySelectorAll('.animal-slide').length;
+  currentAnimalSlide = (currentAnimalSlide + dir + total) % total;
+  updateAnimalCarousel();
+}
+
+function goToAnimalSlide(n) {
+  currentAnimalSlide = n;
+  updateAnimalCarousel();
+}
+    
   </script>
 
 </body>
