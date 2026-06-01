@@ -569,7 +569,7 @@
     const todayStr = formatter.format(new Date());
     const start = new Date('2025-06-01T00:00:00');
     const today = new Date(todayStr + 'T00:00:00');
-    const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1;
+    const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
     document.getElementById('dayCount').textContent = diff;
   }
     updateDayCount();
